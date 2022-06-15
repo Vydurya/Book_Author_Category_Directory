@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class SearchBookDto {
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   search: string;
 
   @IsNotEmpty()
