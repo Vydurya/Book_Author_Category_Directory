@@ -42,17 +42,17 @@ export class BooksService {
   async getbyfilter({ search, aid, cid }: SearchBookDto) {
     const repo = this.booksRepository.createQueryBuilder('book');
     let query = repo
-      .leftJoinAndSelect('book.author', 'author')
-      .leftJoinAndSelect('book.category', 'category')
+      .leftJoinAndSelect('book.aid', 'author')
+      .leftJoinAndSelect('book.cid', 'category')
       .select([
         'book.id',
         'book.name',
-        'author.name',
+        'author.aname',
         'book.description',
-        'category.name',
+        'category.cname',
       ])
       .andWhere('book.name ilike :searchText', { searchText: `%${search}%` });
-
+      console.log({ search, aid, cid });
     if (!isNaN(parseInt(aid)) || aid.toLowerCase() != 'null') {
       query = query.andWhere('author.aid = :aid', { aid });
     }
