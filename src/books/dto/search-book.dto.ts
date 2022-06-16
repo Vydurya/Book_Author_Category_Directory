@@ -6,10 +6,10 @@ export class SearchBookDto {
   search: string;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsString()
   aid: string;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsString()
   cid: string;
 }
